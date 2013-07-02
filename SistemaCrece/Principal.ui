@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QDockWidget" name="dockWidgetInfo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>347</width>
+      <height>247</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="floating">
+     <bool>false</bool>
+    </property>
+    <property name="features">
+     <set>QDockWidget::DockWidgetClosable</set>
+    </property>
+    <property name="allowedAreas">
+     <set>Qt::AllDockWidgetAreas</set>
+    </property>
+    <widget class="QWidget" name="dockWidgetContents_3">
+     <widget class="QTableWidget" name="tableWidgetInfo">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>331</width>
+        <height>171</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>400</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuUsuario">
+    <property name="title">
+     <string>Persona</string>
+    </property>
+    <widget class="QMenu" name="menuAgregar">
+     <property name="title">
+      <string>Agregar</string>
+     </property>
+     <addaction name="actionAgregarEmpleado"/>
+     <addaction name="actionAgregarNino"/>
+     <addaction name="actionAgregarAdulto"/>
+     <addaction name="actionAgregarEstudiante"/>
+    </widget>
+    <widget class="QMenu" name="menuVer">
+     <property name="title">
+      <string>Ver</string>
+     </property>
+     <addaction name="actionVerEmpleado"/>
+     <addaction name="actionVerEstudiante"/>
+     <addaction name="actionVerNino"/>
+     <addaction name="actionVerAdulto"/>
+    </widget>
+    <addaction name="menuAgregar"/>
+    <addaction name="menuVer"/>
+   </widget>
+   <widget class="QMenu" name="menuCursos">
+    <property name="title">
+     <string>Cursos</string>
+    </property>
+    <addaction name="actionVerCurso"/>
+   </widget>
+   <widget class="QMenu" name="menuInstituciones">
+    <property name="title">
+     <string>Instituciones</string>
+    </property>
+    <widget class="QMenu" name="menuEducativas">
+     <property name="title">
+      <string>Educativas</string>
+     </property>
+     <addaction name="actionAgregarInstitucion"/>
+     <addaction name="actionVerInstitucion"/>
+    </widget>
+    <widget class="QMenu" name="menuDonador">
+     <property name="title">
+      <string>Donador</string>
+     </property>
+     <widget class="QMenu" name="menuAgregar_2">
+      <property name="title">
+       <string>Agregar</string>
+      </property>
+      <addaction name="actionAgregarDonador"/>
+      <addaction name="actionAgregarClasificacion"/>
+     </widget>
+     <addaction name="menuAgregar_2"/>
+     <addaction name="actionVerDonador"/>
+    </widget>
+    <addaction name="menuEducativas"/>
+    <addaction name="menuDonador"/>
+   </widget>
+   <widget class="QMenu" name="menuAreas">
+    <property name="title">
+     <string>Áreas</string>
+    </property>
+    <addaction name="actionAgregarArea"/>
+    <addaction name="actionVerArea"/>
+   </widget>
+   <addaction name="menuUsuario"/>
+   <addaction name="menuCursos"/>
+   <addaction name="menuInstituciones"/>
+   <addaction name="menuAreas"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionAgregarEmpleado">
+   <property name="text">
+    <string>Empleado</string>
+   </property>
+  </action>
+  <action name="actionAgregarNino">
+   <property name="text">
+    <string>Niño</string>
+   </property>
+  </action>
+  <action name="actionAgregarAdulto">
+   <property name="text">
+    <string>Adulto</string>
+   </property>
+  </action>
+  <action name="actionAgregarEstudiante">
+   <property name="text">
+    <string>Estudiante</string>
+   </property>
+  </action>
+  <action name="actionVerEmpleado">
+   <property name="text">
+    <string>Empleado</string>
+   </property>
+  </action>
+  <action name="actionVerEstudiante">
+   <property name="text">
+    <string>Estudiante</string>
+   </property>
+  </action>
+  <action name="actionVerNino">
+   <property name="text">
+    <string>Niño</string>
+   </property>
+  </action>
+  <action name="actionVerAdulto">
+   <property name="text">
+    <string>Adulto</string>
+   </property>
+  </action>
+  <action name="actionEmpleado_3">
+   <property name="text">
+    <string>Empleado</string>
+   </property>
+  </action>
+  <action name="actionAgregarCurso">
+   <property name="text">
+    <string>Agregar</string>
+   </property>
+  </action>
+  <action name="actionVerCurso">
+   <property name="text">
+    <string>Ver</string>
+   </property>
+  </action>
+  <action name="actionDonador">
+   <property name="text">
+    <string>Donador</string>
+   </property>
+  </action>
+  <action name="actionDonador_2">
+   <property name="text">
+    <string>Donador</string>
+   </property>
+  </action>
+  <action name="actionVer_3">
+   <property name="text">
+    <string>Ver</string>
+   </property>
+  </action>
+  <action name="actionAgregarArea">
+   <property name="text">
+    <string>Agregar</string>
+   </property>
+  </action>
+  <action name="actionVerArea">
+   <property name="text">
+    <string>Ver</string>
+   </property>
+  </action>
+  <action name="actionAgregarInstitucion">
+   <property name="text">
+    <string>Agregar</string>
+   </property>
+  </action>
+  <action name="actionVerInstitucion">
+   <property name="text">
+    <string>Ver</string>
+   </property>
+  </action>
+  <action name="actionDonador_3">
+   <property name="text">
+    <string>Donador</string>
+   </property>
+  </action>
+  <action name="actionVerDonador">
+   <property name="text">
+    <string>Ver</string>
+   </property>
+  </action>
+  <action name="actionAgregarDonador">
+   <property name="text">
+    <string>Donador</string>
+   </property>
+  </action>
+  <action name="actionAgregarClasificacion">
+   <property name="text">
+    <string>Clasificacion</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionAgregarEmpleado</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarEmpleado()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAgregarNino</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarNino()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAgregarAdulto</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarAdulto()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAgregarEstudiante</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarEstudiante()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerEmpleado</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verEmpleado()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerEstudiante</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verEstudiante()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerNino</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verNino()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerAdulto</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verAdulto()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerCurso</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verCurso()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAgregarInstitucion</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarInstitucion()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerInstitucion</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verInstitucion()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAgregarDonador</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarDonador()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAgregarClasificacion</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarClasificacion()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerDonador</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verDonador()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAgregarArea</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarArea()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerArea</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verArea()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>agregarEmpleado()</slot>
+  <slot>agregarNino()</slot>
+  <slot>agregarAdulto()</slot>
+  <slot>agregarEstudiante()</slot>
+  <slot>verEmpleado()</slot>
+  <slot>verEstudiante()</slot>
+  <slot>verNino()</slot>
+  <slot>verAdulto()</slot>
+  <slot>verCurso()</slot>
+  <slot>agregarInstitucion()</slot>
+  <slot>verInstitucion()</slot>
+  <slot>agregarDonador()</slot>
+  <slot>agregarClasificacion()</slot>
+  <slot>agregarArea()</slot>
+  <slot>verArea()</slot>
+  <slot>verDonador()</slot>
+ </slots>
+</ui>

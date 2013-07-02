@@ -1,0 +1,29 @@
+{
+  "mainFile": "C:/Qt/qtcreator-2.4.1/Proyects/CreceWireFrames/Principal.py", 
+  "use-tabs": false, 
+  "venv": "C:\\Program Files (x86)\\Ninja\\Projects\\Scripts\\python.exe\\Scripts\\python.exe", 
+  "relatedProjects": [], 
+  "name": "SistemaInfoCrece", 
+  "license": "GNU General Public License v3", 
+  "url": "", 
+  "pythonPath": "python", 
+  "preExecScript": "", 
+  "additional_builtins": [], 
+  "programParams": "", 
+  "indentation": 4, 
+  "PYTHONPATH": "", 
+  "supported-extensions": [
+    ".py", 
+    ".html", 
+    ".jpg", 
+    ".png", 
+    ".ui", 
+    ".css", 
+    ".json", 
+    ".js", 
+    ".ini"
+  ], 
+  "project-type": "", 
+  "postExecScript": "", 
+  "description": ""
+}

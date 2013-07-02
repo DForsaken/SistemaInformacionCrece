@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>465</width>
+    <height>361</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QDockWidget" name="dockWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>421</width>
+      <height>320</height>
+     </rect>
+    </property>
+    <property name="floating">
+     <bool>true</bool>
+    </property>
+    <property name="features">
+     <set>QDockWidget::DockWidgetClosable|QDockWidget::DockWidgetFloatable</set>
+    </property>
+    <widget class="QWidget" name="dockWidgetContents">
+     <widget class="QLabel" name="busquedaLbl">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>61</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Busqueda:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="FiltroComboBox">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>40</y>
+        <width>111</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="busquedaTxt">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>10</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="filtroLbl">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>46</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Filtro:</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="infoTableWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>401</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>465</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCursos">
+    <property name="title">
+     <string>Cursos</string>
+    </property>
+    <widget class="QMenu" name="menuVer">
+     <property name="title">
+      <string>Ver </string>
+     </property>
+     <addaction name="actionVerLista_cursos"/>
+     <addaction name="actionVerMaestros"/>
+     <addaction name="actionVerEstudiantes"/>
+     <addaction name="actionVerLista_asistencia"/>
+    </widget>
+    <widget class="QMenu" name="menuAgregar">
+     <property name="title">
+      <string>Agregar</string>
+     </property>
+     <addaction name="actionAgregaCurso"/>
+     <addaction name="actionAgregarMaestro"/>
+     <addaction name="actionAgregarEstudiante"/>
+     <addaction name="actionCausa_falta"/>
+    </widget>
+    <addaction name="menuAgregar"/>
+    <addaction name="menuVer"/>
+   </widget>
+   <widget class="QMenu" name="menuAlumnos">
+    <property name="title">
+     <string>Alumnos</string>
+    </property>
+    <widget class="QMenu" name="menuAgregarAlumno">
+     <property name="title">
+      <string>Agregar</string>
+     </property>
+     <addaction name="actionNuevoAlumno"/>
+     <addaction name="actionExistente"/>
+    </widget>
+    <addaction name="menuAgregarAlumno"/>
+    <addaction name="actionVerAlumno"/>
+   </widget>
+   <widget class="QMenu" name="menuReportes">
+    <property name="title">
+     <string>Reportes</string>
+    </property>
+    <widget class="QMenu" name="menuGenerar">
+     <property name="title">
+      <string>Generar</string>
+     </property>
+     <addaction name="actionExcel"/>
+     <addaction name="actionPDF"/>
+    </widget>
+    <addaction name="menuGenerar"/>
+   </widget>
+   <addaction name="menuCursos"/>
+   <addaction name="menuAlumnos"/>
+   <addaction name="menuReportes"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionVerLista_cursos">
+   <property name="text">
+    <string>Catalogo de cursos</string>
+   </property>
+  </action>
+  <action name="actionVerAlumnos">
+   <property name="text">
+    <string>Alumnos</string>
+   </property>
+  </action>
+  <action name="actionAlumno">
+   <property name="text">
+    <string>Alumno</string>
+   </property>
+  </action>
+  <action name="actionCurso">
+   <property name="text">
+    <string>Edad</string>
+   </property>
+  </action>
+  <action name="actionTemporada">
+   <property name="text">
+    <string>Maestro</string>
+   </property>
+  </action>
+  <action name="actionAgregaCurso">
+   <property name="text">
+    <string>Curso</string>
+   </property>
+  </action>
+  <action name="actionAgregarMaestro">
+   <property name="text">
+    <string>Maestro</string>
+   </property>
+  </action>
+  <action name="actionAgregarEstudiante">
+   <property name="text">
+    <string>Estudiante</string>
+   </property>
+  </action>
+  <action name="actionVerMaestros">
+   <property name="text">
+    <string>Maestros</string>
+   </property>
+  </action>
+  <action name="actionVerEstudiantes">
+   <property name="text">
+    <string>Estudiante</string>
+   </property>
+  </action>
+  <action name="actionVerAlumno">
+   <property name="text">
+    <string>Ver</string>
+   </property>
+  </action>
+  <action name="actionAyudante_2">
+   <property name="text">
+    <string>Estudiante</string>
+   </property>
+  </action>
+  <action name="actionVerLista_asistencia">
+   <property name="text">
+    <string>Lista asistencia</string>
+   </property>
+  </action>
+  <action name="actionCausa_falta">
+   <property name="text">
+    <string>Causa falta</string>
+   </property>
+  </action>
+  <action name="actionNuevo">
+   <property name="text">
+    <string>Nuevo</string>
+   </property>
+  </action>
+  <action name="actionNuevoAlumno">
+   <property name="text">
+    <string>Nuevo</string>
+   </property>
+  </action>
+  <action name="actionExistente">
+   <property name="text">
+    <string>Existente</string>
+   </property>
+  </action>
+  <action name="actionExcel">
+   <property name="text">
+    <string>Excel</string>
+   </property>
+  </action>
+  <action name="actionPDF">
+   <property name="text">
+    <string>PDF</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionAgregaCurso</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarCurso()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAgregarEstudiante</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarEstudianteCurso()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAgregarMaestro</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarMaestroCurso()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCausa_falta</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarCausaFaltaCurso()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerLista_cursos</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verCatalogoCursos()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerMaestros</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verMaestros()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerEstudiantes</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verEstudiantes()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerLista_asistencia</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verListaAsistencia()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionNuevoAlumno</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarAlumnoCurso()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExistente</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>agregarAlumnoCurso()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>agregarAlumnoCurso()</slot>
+  <slot>agregarMaestroCurso()</slot>
+  <slot>agregarEstudianteCurso()</slot>
+  <slot>agregarCausaFaltaCurso()</slot>
+  <slot>verCatalogoCursos()</slot>
+  <slot>verAlumnos()</slot>
+  <slot>verMaestros()</slot>
+  <slot>verEstudiantes()</slot>
+  <slot>verListaAsistencia()</slot>
+  <slot>agregarCurso()</slot>
+ </slots>
+</ui>

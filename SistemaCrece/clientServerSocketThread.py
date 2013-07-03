@@ -27,6 +27,7 @@ class ClientThread( threading.Thread ):
 
         threading.Thread.__init__( self )
         self.client = client_sock
+        
 
     def run( self ):
         '''
@@ -40,6 +41,7 @@ class ClientThread( threading.Thread ):
         global QUIT
         done = False
         cmd = self.readline()
+        print cmd
         #
         # Read data from the socket and process it
         #
@@ -67,12 +69,15 @@ class ClientThread( threading.Thread ):
         Helper function, reads up to 1024 chars from the socket, and returns
         them as a string, all letters in lowercase, and without any end of line
         markers '''
-
-        result = self.client.recv( 1024 )
-        if( None != result ):
-            result = result.strip().lower()
-        return result
-
+        self.client.setblocking(False)
+        try:
+            result = self.client.recv( 1024 )
+            if( None != result ):
+                result = result.strip().lower()
+            return result
+        except:
+            data = ""
+        return "sadfadsf"
     def writeline( self, text ):
         '''
         Helper function, writes teh given string to the socket, with an end of
@@ -117,10 +122,11 @@ class Server:
                 # Create the socket
                 #
                 self.sock = socket.socket( socket.AF_INET, socket.SOCK_STREAM )
+                
                 #
                 # Bind it to the interface and port we want to listen on
                 #
-                self.sock.bind( ( '127.0.0.1', 5050 ) )
+                self.sock.bind( ( '127.0.0.1', 5055 ) )            
                 #
                 # Listen for incoming connections. This server can handle up to
                 # 5 simultaneous connections
@@ -139,7 +145,7 @@ class Server:
 
         print "Server is listening for incoming connections."
         print "Try to connect through the command line, with:"
-        print "telnet localhost 5050"
+        print "telnet localhost 5055"
         print "and then type whatever you want."
         print
         print "typing 'bye' finishes the thread, but not the server ",
@@ -208,8 +214,6 @@ class Server:
         #
         self.sock.close()
 
-if "__main__" == __name__:
-    server = Server()
-    server.run()
-
-    print "Terminated"
+server = Server()
+server.run()
+print "Terminated"

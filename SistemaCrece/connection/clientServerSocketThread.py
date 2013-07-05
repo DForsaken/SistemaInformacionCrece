@@ -1,12 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
-#
-# [SNIPPET_NAME: Threaded Server]
-# [SNIPPET_CATEGORIES: Python Core, socket, threading]
-# [SNIPPET_DESCRIPTION: Simple example of Python's socket and threading modules]
-# [SNIPPET_DOCS: http://docs.python.org/library/socket.html, http://docs.python.org/library/threading.html]
-# [SNIPPET_AUTHOR: Gonzalo Núñez <gnunezr@gmail.com>]
-# [SNIPPET_LICENSE: GPL]
 
 import sys
 import socket

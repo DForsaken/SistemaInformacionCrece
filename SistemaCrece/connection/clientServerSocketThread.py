@@ -5,52 +5,62 @@ import sys
 import socket
 import threading
 import time
+import conexionBD
+from utilidades import Utilidades
 
 QUIT = False
 
 class ClientThread( threading.Thread ):
     '''
     Class that implements the client threads in this server
-    '''
+    '''   
 
     def __init__( self, client_sock ):
         '''
         Initialize the object, save the socket that this thread will use.
         '''
-
+        self.firstRead = True
         threading.Thread.__init__( self )
         self.client = client_sock
+        self.utilidad = Utilidades()     
         
-
     def run( self ):
         '''
         Thread's main loop. Once this function returns, the thread is finished
         and dies.
         '''
-
+        print "start"
         #
         # Need to declare QUIT as global, since the method can change it
         #
         global QUIT
-        done = False
-        cmd = self.readline()
-        print cmd
+        done = False   
         #
         # Read data from the socket and process it
         #
+        
         while not done:
-            if 'quit' == cmd :
-                self.writeline( 'Ok, bye' )
-                QUIT = True
-                done = True
-            elif 'bye' == cmd:
-                self.writeline( 'Ok, bye' )
-                done = True
+            #handshake 
+            if self.firstRead :
+                self.firstRead = False
+                cmd = self.readline()
+                print "comunidad readline", cmd
+                if 'comunidad' == cmd: 
+                    self.writeline("crece")
+                    print "enviando crece"
+                elif cmd == None:
+                    print "no crece"
             else:
-                self.writeline( self.name )
-
-            cmd = self.readline()
-
+                if 'quit' == cmd :
+                    self.writeline( 'Ok, bye' )
+                    QUIT = True
+                    done = True
+                else:                    
+                    cmd = self.readline()    
+                    if cmd != None and cmd != "":
+                        print " entro CMD " , cmd      
+                        self.writeline(self.procesarPeticion(cmd))
+                        
         #
         # Make sure the socket is closed once we're done with it
         #
@@ -66,18 +76,32 @@ class ClientThread( threading.Thread ):
         try:
             result = self.client.recv( 1024 )
             if( None != result ):
-                result = result.strip().lower()
-            return result
+                return self.utilidad.desempaquetar(result)
+            return None
         except:
-            data = ""
-        return "sadfadsf"
+            a = ""
+        return ""
+    
     def writeline( self, text ):
         '''
         Helper function, writes teh given string to the socket, with an end of
         line marker appended at the end
         '''
-
-        self.client.send( text.strip() + '\n' )
+        self.client.send(self.utilidad.empaquetar(text))     
+        
+    def procesarPeticion(self, args):
+        #separa la informacion en 3 partes
+        
+        print "procesar peticion server"
+        conexion = conexionBD.conexionDB()
+        conexion.conectar()
+        res = conexion.procesarQuery(args)
+        conexion.desconectar()
+        print "regresando res"
+        return res
+        
+    
+           
 
 class Server:
     '''
@@ -97,6 +121,7 @@ class Server:
         connections. Once an incomming connection is deteceted, creates a
         ClientThread to handle it, and goes back to listening mode.
         '''
+        
         all_good = False
         try_count = 0
 
@@ -125,6 +150,7 @@ class Server:
                 # 5 simultaneous connections
                 #
                 self.sock.listen( 5 )
+                self.sock.setblocking(False)
                 all_good = True
                 break
             except socket.error, err:
@@ -176,6 +202,7 @@ class Server:
                 print 'Incoming Connection. Started thread ',
                 print new_thread.getName()
                 self.thread_list.append( new_thread )
+                
                 new_thread.start()
 
                 #
@@ -207,6 +234,5 @@ class Server:
         #
         self.sock.close()
 
-server = Server()
-server.run()
-print "Terminated"
+        
+

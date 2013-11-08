@@ -255,7 +255,7 @@
  <connections>
   <connection>
    <sender>actionAgregaCurso</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>agregarCurso()</slot>
    <hints>
@@ -271,7 +271,7 @@
   </connection>
   <connection>
    <sender>actionAgregarEstudiante</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>agregarEstudianteCurso()</slot>
    <hints>
@@ -287,7 +287,7 @@
   </connection>
   <connection>
    <sender>actionAgregarMaestro</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>agregarMaestroCurso()</slot>
    <hints>
@@ -303,7 +303,7 @@
   </connection>
   <connection>
    <sender>actionCausa_falta</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>agregarCausaFaltaCurso()</slot>
    <hints>
@@ -319,7 +319,7 @@
   </connection>
   <connection>
    <sender>actionVerLista_cursos</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>verCatalogoCursos()</slot>
    <hints>
@@ -335,7 +335,7 @@
   </connection>
   <connection>
    <sender>actionVerMaestros</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>verMaestros()</slot>
    <hints>
@@ -351,7 +351,7 @@
   </connection>
   <connection>
    <sender>actionVerEstudiantes</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>verEstudiantes()</slot>
    <hints>
@@ -367,7 +367,7 @@
   </connection>
   <connection>
    <sender>actionVerLista_asistencia</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>verListaAsistencia()</slot>
    <hints>
@@ -383,7 +383,7 @@
   </connection>
   <connection>
    <sender>actionNuevoAlumno</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>agregarAlumnoCurso()</slot>
    <hints>
@@ -399,7 +399,7 @@
   </connection>
   <connection>
    <sender>actionExistente</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>agregarAlumnoCurso()</slot>
    <hints>

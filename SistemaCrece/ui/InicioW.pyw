@@ -6,6 +6,7 @@ import sys
 
 from PyQt4.QtCore import pyqtSignal
 from Inicio import Ui_Form
+import PrincipalW
 
 class Inicio(QtGui.QMainWindow):
 
@@ -17,11 +18,12 @@ class Inicio(QtGui.QMainWindow):
         self.ui.setupUi(self)
 
     def ingresar(self):
-        self.cancelar()
-
+        self.close()       
+        
     def closeEvent(self, event):
         self.closed.emit()
         event.accept()
+        
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)

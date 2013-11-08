@@ -10,6 +10,8 @@ from AgregarArea import Ui_Form
 class AgregarArea(QtGui.QMainWindow):
 
     closed = pyqtSignal()
+    agregar = pyqtSignal()
+    args = ["agregarArea",""]
 
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
@@ -17,7 +19,9 @@ class AgregarArea(QtGui.QMainWindow):
         self.ui.setupUi(self)
 
     def agregarArea(self):
-        nombre = self.ui.areaTxt.text()
+        self.args.append(str(self.ui.areaTxt.text()))
+        print self.ui.areaTxt.text(), " -> agregarArea"
+        self.agregar.emit()
         self.cancelar()
 
     def cancelar(self):

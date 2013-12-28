@@ -23,6 +23,7 @@ class ClientThread( threading.Thread ):
         threading.Thread.__init__( self )
         self.client = client_sock
         self.utilidad = Utilidades()     
+        self.packTam = 4096
         
     def run( self ):
         '''
@@ -69,25 +70,40 @@ class ClientThread( threading.Thread ):
 
     def readline( self ):
         '''
-        Helper function, reads up to 1024 chars from the socket, and returns
+        Helper function, reads up to 64000 chars from the socket, and returns
         them as a string, all letters in lowercase, and without any end of line
         markers '''
         self.client.setblocking(False)
+        resultado = []
+        objSerializado = ""
+        #while(True):
         try:
-            result = self.client.recv( 1024 )
-            if( None != result ):
-                return self.utilidad.desempaquetar(result)
-            return None
+            res = self.client.recv( self.packTam )
+            f = open("test", "w")
+            f.write(res)
+            f.close()
+            print "len", len(res)
+            print "res ", res
+            resultado = self.utilidad.unWrapPaquete(res)
+            print "resultado ", resultado
+            objSerializado += resultado[0] 
+            if resultado[1] == 1:
+                print "fue uno"
+                if None != objSerializado or objSerializado == "":
+                    print "retornando", objSerializado
+                    return self.utilidad.desempaquetar(objSerializado)
         except:
             a = ""
-        return ""
+        return None
     
     def writeline( self, text ):
         '''
         Helper function, writes teh given string to the socket, with an end of
         line marker appended at the end
         '''
-        self.client.send(self.utilidad.empaquetar(text))     
+        listObjEnviar = self.utilidad.empaquetar(text)
+        for i in range(0, len(listObjEnviar)):
+            self.client.send(listObjEnviar[i])     
         
     def procesarPeticion(self, args):
         #separa la informacion en 3 partes
@@ -144,7 +160,7 @@ class Server:
                 #
                 # Bind it to the interface and port we want to listen on
                 #
-                self.sock.bind( ( '127.0.0.1', 5055 ) )            
+                self.sock.bind( ( '127.0.0.1', 50050 ) )            
                 #
                 # Listen for incoming connections. This server can handle up to
                 # 5 simultaneous connections

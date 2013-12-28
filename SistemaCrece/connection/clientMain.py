@@ -3,13 +3,15 @@ from ui import PrincipalW
 from PyQt4 import QtCore, QtGui
 import sys
 from utilidades import Utilidades
+from bsddb.test.test_basics import DASH
 
 class clientMain:
   
     def __init__(self):
         self.host = "localhost"
-        self.puerto = 5055     
-        self.dataTypeFlag = 0   
+        self.puerto = 50050     
+        self.dataTypeFlag = 0  
+        self.packTam = 4096
         # 0 for string
         # 1 for table
         # 2 for comobox
@@ -35,38 +37,46 @@ class clientMain:
         except Exception, e:
             print "Error : "  , e 
             
-                 
     def principal(self):
+        print "abriendo ..."
         self.app = QtGui.QApplication(sys.argv)
         self.p = PrincipalW.Principal()
         self.p.peticion.connect(self.procesarPeticion)
         sys.exit(self.app.exec_())                              
                   
-    def enviarDatos(self, datos):
-        self.s.send(self.utilidad.empaquetar(datos))
-        print "enviando ", datos       
-        
-      
+    def enviarDatos(self, datos):      
+        listObjEnviar = self.utilidad.empaquetar(datos)
+        for i in range(0, len(listObjEnviar)):
+            print "len enviado - ", listObjEnviar[i]
+            self.s.send(listObjEnviar[i])
+        print "enviando ", datos            
+            
     def recibirDatos(self):
         # 0 for string
         # 1 for table
         # 2 for comobox
         self.s.setblocking(True)
-        try:
-            result = self.s.recv( 1024 )
-            if self.dataTypeFlag == 1:
-                print "si es tabla"
-            elif self.dataTypeFlag == 2:
-                print "si es combo"
-            elif self.dataTypeFlag == 0:
-                print "es string"
-            if( None != result ):
-                print "not none result"
-                return self.utilidad.desempaquetar(result)
+        resultado = []
+        objSerializado = ""
+        while(True):
+            try:
+                resultado = self.utilidad.unWrapPaquete(self.s.recv( self.packTam ))
+                objSerializado += resultado[0] 
+                if resultado[1] == 1:
+                    break
+            except Exception, e:
+                print e
             return None
-        except Exception, e:
-            print e
-        return ""
+        if self.dataTypeFlag == 1:
+            print "si es tabla"
+        elif self.dataTypeFlag == 2:
+            print "si es combo"
+        elif self.dataTypeFlag == 0:
+            print "es string"
+        if( None != resultado[0] ):
+            print "not none result"
+        return self.utilidad.desempaquetar(resultado[0])
+        
        
     #cada clase llama esta funcion para enviar al server 
     #datos -> tupla 

@@ -8,10 +8,6 @@ from Cursos import Ui_MainWindow
 from PyQt4.QtCore import pyqtSignal
 
 
-#import AgregarAreaW, AgregarPersonaW, InicioW, AgregarDonadorW, AgregarClasificacionW, CursosW
-#from Principal import Ui_MainWindow
-#from PyQt4.QtCore import pyqtSignal
-
 class Curso(QtGui.QMainWindow):
 
     closed = pyqtSignal()
@@ -20,11 +16,12 @@ class Curso(QtGui.QMainWindow):
     dataTypeFlag = 0
 
     def __init__(self, parent=None):
-        QtGui.QMainWindow.__init__(self)
+        QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        if "sd" == "sd":
-            print "d"
+
+    def ingresar(self):
+        self.close()       
 
     def agregarEstudianteCurso(self):
         myapp = AgregarPersonaCursoW.AgregarPersonaCurso(self)
@@ -74,18 +71,23 @@ class Curso(QtGui.QMainWindow):
 
     def obtenerTabla(self, res):
         print res
-        rows = len(res)
-        cols = len(res[0])
-        self.ui.tableWidgetInfo.setRowCount(rows)
-        self.ui.tableWidgetInfo.setColumnCount(cols)
-        for i in range(0,rows):
-            for j in range (0,cols):                    
-                item = str(res[i][j])    
-                item = QtGui.QTableWidgetItem(item)
-                item.setFlags( QtCore.Qt.ItemIsSelectable |  QtCore.Qt.ItemIsEnabled )
-                self.ui.tableWidgetInfo.setItem(i,j,item)
-        print "tabla lista"        
-        
+        if(res != None):
+            if(len(res) != 0):
+                rows = len(res)
+                cols = len(res[0])
+                self.ui.tableWidgetInfo.setRowCount(rows)
+                self.ui.tableWidgetInfo.setColumnCount(cols)
+                for i in range(0,rows):
+                    for j in range (0,cols):                    
+                        item = str(res[i][j])    
+                        item = QtGui.QTableWidgetItem(item)
+                        item.setFlags( QtCore.Qt.ItemIsSelectable |  QtCore.Qt.ItemIsEnabled )
+                        self.ui.tableWidgetInfo.setItem(i,j,item)
+                print "tabla lista"
+            else:
+                print "tabla vacia"        
+        else:
+            print "Empty result set"
         
     
     def cambiarVistaTabla(self, res):
@@ -97,6 +99,7 @@ class Curso(QtGui.QMainWindow):
             for column in range (0,len(record)):                        
                 newitem = QtGui.QTableWidgetItem(str(record[column]))
                 self.ui.tableWidgetInfo.setItem(row,column,newitem)
+    
 
     def procesarPeticion(self, app):    
         if len(app.args) > 0:

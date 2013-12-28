@@ -28,7 +28,7 @@ class Principal(QtGui.QMainWindow):
         inicio.closed.connect(self.show)
         inicio.show()
         self.hide()
-
+        
     def agregarEmpleado(self):
         #mismo formulario que persona solo que agregar atributos faltantes en campos temp
         myapp = AgregarPersonaW.AgregarPersona(self)
@@ -99,11 +99,11 @@ class Principal(QtGui.QMainWindow):
 
 
     def verCurso(self):
-        myapp = CursosW.Curso(self)
-        myapp.closed.connect(self.show)
-        myapp.show()
-        self.hide()
-
+        verCurso = CursosW.Curso(self)
+        verCurso.closed.connect(self.show)
+        verCurso.show()
+        self.hide() 
+        
     def verInstitucion(self):
         self.dataTypeFlag = 1
         self.procesarPeticionVer(["verInstitucion","","tabla"])
@@ -128,18 +128,23 @@ class Principal(QtGui.QMainWindow):
         
     def obtenerTabla(self, res):
         print res
-        rows = len(res)
-        cols = len(res[0])
-        self.ui.tableWidgetInfo.setRowCount(rows)
-        self.ui.tableWidgetInfo.setColumnCount(cols)
-        for i in range(0,rows):
-            for j in range (0,cols):                    
-                item = str(res[i][j])    
-                item = QtGui.QTableWidgetItem(item)
-                item.setFlags( QtCore.Qt.ItemIsSelectable |  QtCore.Qt.ItemIsEnabled )
-                self.ui.tableWidgetInfo.setItem(i,j,item)
-        print "tabla lista"        
-        
+        if(res != None):
+            if(len(res) != 0):
+                rows = len(res)
+                cols = len(res[0])
+                self.ui.tableWidgetInfo.setRowCount(rows)
+                self.ui.tableWidgetInfo.setColumnCount(cols)
+                for i in range(0,rows):
+                    for j in range (0,cols):                    
+                        item = str(res[i][j])    
+                        item = QtGui.QTableWidgetItem(item)
+                        item.setFlags( QtCore.Qt.ItemIsSelectable |  QtCore.Qt.ItemIsEnabled )
+                        self.ui.tableWidgetInfo.setItem(i,j,item)
+                print "tabla lista"
+            else:
+                print "tabla vacia"        
+        else:
+            print "Empty result set"
         
     
     def cambiarVistaTabla(self, res):

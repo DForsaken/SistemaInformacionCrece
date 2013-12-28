@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'Principal.ui'
 #
-# Created: Sun Jun 16 22:48:47 2013
-#      by: PyQt4 UI code generator 4.10
+# Created: Thu Dec 26 17:10:12 2013
+#      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -167,7 +167,7 @@ class Ui_MainWindow(object):
         self.menuUsuario.setTitle(_translate("MainWindow", "Persona", None))
         self.menuAgregar.setTitle(_translate("MainWindow", "Agregar", None))
         self.menuVer.setTitle(_translate("MainWindow", "Ver", None))
-        self.menuCursos.setTitle(_translate("MainWindow", "Cursos", None))
+        self.menuCursos.setTitle(_translate("MainWindow", "Programas", None))
         self.menuInstituciones.setTitle(_translate("MainWindow", "Instituciones", None))
         self.menuEducativas.setTitle(_translate("MainWindow", "Educativas", None))
         self.menuDonador.setTitle(_translate("MainWindow", "Donador", None))

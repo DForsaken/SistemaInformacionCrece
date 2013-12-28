@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'Cursos.ui'
 #
-# Created: Sun Jun 16 14:13:16 2013
-#      by: PyQt4 UI code generator 4.10
+# Created: Thu Dec 26 17:41:06 2013
+#      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -30,7 +30,10 @@ class Ui_MainWindow(object):
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.dockWidget = QtGui.QDockWidget(self.centralwidget)
-        self.dockWidget.setGeometry(QtCore.QRect(20, 10, 431, 311))
+        self.dockWidget.setEnabled(True)
+        self.dockWidget.setGeometry(QtCore.QRect(20, 20, 421, 320))
+        self.dockWidget.setFloating(False)
+        self.dockWidget.setFeatures(QtGui.QDockWidget.DockWidgetClosable|QtGui.QDockWidget.DockWidgetFloatable)
         self.dockWidget.setObjectName(_fromUtf8("dockWidget"))
         self.dockWidgetContents = QtGui.QWidget()
         self.dockWidgetContents.setObjectName(_fromUtf8("dockWidgetContents"))
@@ -66,6 +69,10 @@ class Ui_MainWindow(object):
         self.menuAlumnos.setObjectName(_fromUtf8("menuAlumnos"))
         self.menuAgregarAlumno = QtGui.QMenu(self.menuAlumnos)
         self.menuAgregarAlumno.setObjectName(_fromUtf8("menuAgregarAlumno"))
+        self.menuReportes = QtGui.QMenu(self.menubar)
+        self.menuReportes.setObjectName(_fromUtf8("menuReportes"))
+        self.menuGenerar = QtGui.QMenu(self.menuReportes)
+        self.menuGenerar.setObjectName(_fromUtf8("menuGenerar"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
@@ -104,6 +111,10 @@ class Ui_MainWindow(object):
         self.actionNuevoAlumno.setObjectName(_fromUtf8("actionNuevoAlumno"))
         self.actionExistente = QtGui.QAction(MainWindow)
         self.actionExistente.setObjectName(_fromUtf8("actionExistente"))
+        self.actionExcel = QtGui.QAction(MainWindow)
+        self.actionExcel.setObjectName(_fromUtf8("actionExcel"))
+        self.actionPDF = QtGui.QAction(MainWindow)
+        self.actionPDF.setObjectName(_fromUtf8("actionPDF"))
         self.menuVer.addAction(self.actionVerLista_cursos)
         self.menuVer.addAction(self.actionVerMaestros)
         self.menuVer.addAction(self.actionVerEstudiantes)
@@ -118,31 +129,37 @@ class Ui_MainWindow(object):
         self.menuAgregarAlumno.addAction(self.actionExistente)
         self.menuAlumnos.addAction(self.menuAgregarAlumno.menuAction())
         self.menuAlumnos.addAction(self.actionVerAlumno)
+        self.menuGenerar.addAction(self.actionExcel)
+        self.menuGenerar.addAction(self.actionPDF)
+        self.menuReportes.addAction(self.menuGenerar.menuAction())
         self.menubar.addAction(self.menuCursos.menuAction())
         self.menubar.addAction(self.menuAlumnos.menuAction())
+        self.menubar.addAction(self.menuReportes.menuAction())
 
         self.retranslateUi(MainWindow)
-        QtCore.QObject.connect(self.actionAgregaCurso, QtCore.SIGNAL(_fromUtf8("activated()")), MainWindow.agregarCurso)
-        QtCore.QObject.connect(self.actionAgregarEstudiante, QtCore.SIGNAL(_fromUtf8("activated()")), MainWindow.agregarEstudianteCurso)
-        QtCore.QObject.connect(self.actionAgregarMaestro, QtCore.SIGNAL(_fromUtf8("activated()")), MainWindow.agregarMaestroCurso)
-        QtCore.QObject.connect(self.actionCausa_falta, QtCore.SIGNAL(_fromUtf8("activated()")), MainWindow.agregarCausaFaltaCurso)
-        QtCore.QObject.connect(self.actionVerLista_cursos, QtCore.SIGNAL(_fromUtf8("activated()")), MainWindow.verCatalogoCursos)
-        QtCore.QObject.connect(self.actionVerMaestros, QtCore.SIGNAL(_fromUtf8("activated()")), MainWindow.verMaestros)
-        QtCore.QObject.connect(self.actionVerEstudiantes, QtCore.SIGNAL(_fromUtf8("activated()")), MainWindow.verEstudiantes)
-        QtCore.QObject.connect(self.actionVerLista_asistencia, QtCore.SIGNAL(_fromUtf8("activated()")), MainWindow.verListaAsistencia)
-        QtCore.QObject.connect(self.actionNuevoAlumno, QtCore.SIGNAL(_fromUtf8("activated()")), MainWindow.agregarAlumnoCurso)
-        QtCore.QObject.connect(self.actionExistente, QtCore.SIGNAL(_fromUtf8("activated()")), MainWindow.agregarAlumnoCurso)
+        QtCore.QObject.connect(self.actionAgregaCurso, QtCore.SIGNAL(_fromUtf8("triggered()")), MainWindow.agregarCurso)
+        QtCore.QObject.connect(self.actionAgregarEstudiante, QtCore.SIGNAL(_fromUtf8("triggered()")), MainWindow.agregarEstudianteCurso)
+        QtCore.QObject.connect(self.actionAgregarMaestro, QtCore.SIGNAL(_fromUtf8("triggered()")), MainWindow.agregarMaestroCurso)
+        QtCore.QObject.connect(self.actionCausa_falta, QtCore.SIGNAL(_fromUtf8("triggered()")), MainWindow.agregarCausaFaltaCurso)
+        QtCore.QObject.connect(self.actionVerLista_cursos, QtCore.SIGNAL(_fromUtf8("triggered()")), MainWindow.verCatalogoCursos)
+        QtCore.QObject.connect(self.actionVerMaestros, QtCore.SIGNAL(_fromUtf8("triggered()")), MainWindow.verMaestros)
+        QtCore.QObject.connect(self.actionVerEstudiantes, QtCore.SIGNAL(_fromUtf8("triggered()")), MainWindow.verEstudiantes)
+        QtCore.QObject.connect(self.actionVerLista_asistencia, QtCore.SIGNAL(_fromUtf8("triggered()")), MainWindow.verListaAsistencia)
+        QtCore.QObject.connect(self.actionNuevoAlumno, QtCore.SIGNAL(_fromUtf8("triggered()")), MainWindow.agregarAlumnoCurso)
+        QtCore.QObject.connect(self.actionExistente, QtCore.SIGNAL(_fromUtf8("triggered()")), MainWindow.agregarAlumnoCurso)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.busquedaLbl.setText(_translate("MainWindow", "Busqueda:", None))
         self.filtroLbl.setText(_translate("MainWindow", "Filtro:", None))
-        self.menuCursos.setTitle(_translate("MainWindow", "Cursos", None))
+        self.menuCursos.setTitle(_translate("MainWindow", "Programas", None))
         self.menuVer.setTitle(_translate("MainWindow", "Ver ", None))
         self.menuAgregar.setTitle(_translate("MainWindow", "Agregar", None))
         self.menuAlumnos.setTitle(_translate("MainWindow", "Alumnos", None))
         self.menuAgregarAlumno.setTitle(_translate("MainWindow", "Agregar", None))
+        self.menuReportes.setTitle(_translate("MainWindow", "Reportes", None))
+        self.menuGenerar.setTitle(_translate("MainWindow", "Generar", None))
         self.actionVerLista_cursos.setText(_translate("MainWindow", "Catalogo de cursos", None))
         self.actionVerAlumnos.setText(_translate("MainWindow", "Alumnos", None))
         self.actionAlumno.setText(_translate("MainWindow", "Alumno", None))
@@ -160,4 +177,6 @@ class Ui_MainWindow(object):
         self.actionNuevo.setText(_translate("MainWindow", "Nuevo", None))
         self.actionNuevoAlumno.setText(_translate("MainWindow", "Nuevo", None))
         self.actionExistente.setText(_translate("MainWindow", "Existente", None))
+        self.actionExcel.setText(_translate("MainWindow", "Excel", None))
+        self.actionPDF.setText(_translate("MainWindow", "PDF", None))
 

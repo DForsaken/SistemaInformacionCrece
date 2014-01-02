@@ -75,14 +75,14 @@ class Curso(QtGui.QMainWindow):
             if(len(res) != 0):
                 rows = len(res)
                 cols = len(res[0])
-                self.ui.tableWidgetInfo.setRowCount(rows)
-                self.ui.tableWidgetInfo.setColumnCount(cols)
+                self.ui.infoTableWidget.setRowCount(rows)
+                self.ui.infoTableWidget.setColumnCount(cols)
                 for i in range(0,rows):
                     for j in range (0,cols):                    
                         item = str(res[i][j])    
                         item = QtGui.QTableWidgetItem(item)
                         item.setFlags( QtCore.Qt.ItemIsSelectable |  QtCore.Qt.ItemIsEnabled )
-                        self.ui.tableWidgetInfo.setItem(i,j,item)
+                        self.ui.infoTableWidget.setItem(i,j,item)
                 print "tabla lista"
             else:
                 print "tabla vacia"        
@@ -92,13 +92,13 @@ class Curso(QtGui.QMainWindow):
     
     def cambiarVistaTabla(self, res):
         print "cambiando vista"
-        #self.ui.tableWidgetInfo = tablaNueva
+        #self.ui.infoTableWidget = tablaNueva
         for row in range(0,len(res)):
-            self.ui.tableWidgetInfo.insertRow(row)
+            self.ui.infoTableWidget.insertRow(row)
             record = res[row]                 
             for column in range (0,len(record)):                        
                 newitem = QtGui.QTableWidgetItem(str(record[column]))
-                self.ui.tableWidgetInfo.setItem(row,column,newitem)
+                self.ui.infoTableWidget.setItem(row,column,newitem)
     
 
     def procesarPeticion(self, app):    

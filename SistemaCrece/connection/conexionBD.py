@@ -4,7 +4,7 @@ Created on 03/07/2013
 @author: The Forsaken
 '''
 import MySQLdb
-from PyQt4 import QtCore, QtGui
+from PyQt4 import QtGui
 
 class conexionDB:
 
@@ -56,8 +56,10 @@ class conexionDB:
                 #return self.obtenerTabla(res)
             elif args[2] == "combo":
                 return self.obtenerCombo(res)               
-            elif args[2] == "":
-                return None
+            elif args[2] == "string":
+                return "string"
+            else: 
+                return ""
         except Exception, e:
             print e
 

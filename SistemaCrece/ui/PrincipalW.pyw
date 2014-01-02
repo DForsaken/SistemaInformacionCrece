@@ -11,11 +11,11 @@ class Principal(QtGui.QMainWindow):
 
     peticion = pyqtSignal()
     args = []
+    cursos = None
     dataTypeFlag = 0
     # 0 for string
     # 1 for table
     # 2 for comobox
-        
 
     def __init__(self, parent=None):
         QtGui.QMainWindow.__init__(self)
@@ -97,11 +97,15 @@ class Principal(QtGui.QMainWindow):
         self.dataTypeFlag = 1
         self.procesarPeticionVer(["verEstudiante","","tabla"])
 
-
     def verCurso(self):
-        verCurso = CursosW.Curso(self)
-        verCurso.closed.connect(self.show)
-        verCurso.show()
+        if self.cursos == None:
+            print "No Existe Curso"
+            self.cursos = CursosW.Curso(self)
+            self.cursos.closed.connect(self.show)
+            self.cursos.peticion.connect(self.procesarPeticionCursosVer)
+        else:
+            print "Existe Curso"
+        self.cursos.show()
         self.hide() 
         
     def verInstitucion(self):
@@ -121,15 +125,12 @@ class Principal(QtGui.QMainWindow):
         args[2] = tipo de retorno (tabla, string, comboBox)
         ''' 
         self.dataTypeFlag = 1  
-        #self.obtenerTabla(self.procesarPeticionVer(["verArea","","tabla"]))
         self.procesarPeticionVer(["verArea","","tabla"])
-        print "obtiene tabla"
-        #self.cambiarVistaTabla(tabla)
         
     def obtenerTabla(self, res):
-        print res
-        if(res != None):
-            if(len(res) != 0):
+        if res != None:
+            print "No delires"
+            if len(res) != 0 :
                 rows = len(res)
                 cols = len(res[0])
                 self.ui.tableWidgetInfo.setRowCount(rows)
@@ -143,10 +144,34 @@ class Principal(QtGui.QMainWindow):
                 print "tabla lista"
             else:
                 print "tabla vacia"        
+                print "res vacia ", res
+        else:
+            print "Empty result set"
+       
+        '''print res
+        if res != None:
+            if self.cursos != None and self.cursos.isActiveWindow():
+                self.cursos.obtenerTabla(res)
+            else:
+                print "No delires"
+                if len(res) != 0 :
+                    rows = len(res)
+                    cols = len(res[0])
+                    self.ui.tableWidgetInfo.setRowCount(rows)
+                    self.ui.tableWidgetInfo.setColumnCount(cols)
+                    for i in range(0,rows):
+                        for j in range (0,cols):                    
+                            item = str(res[i][j])    
+                            item = QtGui.QTableWidgetItem(item)
+                            item.setFlags( QtCore.Qt.ItemIsSelectable |  QtCore.Qt.ItemIsEnabled )
+                            self.ui.tableWidgetInfo.setItem(i,j,item)
+                    print "tabla lista"
+                else:
+                    print "tabla vacia"        
         else:
             print "Empty result set"
         
-    
+    '''
     def cambiarVistaTabla(self, res):
         print "cambiando vista"
         #self.ui.tableWidgetInfo = tablaNueva
@@ -160,6 +185,7 @@ class Principal(QtGui.QMainWindow):
     def procesarPeticion(self, app):    
         if len(app.args) > 0:
             self.args = app.args[:]
+            self.dataTypeFlag = 0
             print self.peticion.emit()
             print "procesar peticion app"
             
@@ -169,8 +195,11 @@ class Principal(QtGui.QMainWindow):
             print self.peticion.emit()
             print "procesar peticion ver"         
     
-
-
+    def procesarPeticionCursosVer(self):    
+        self.args = self.cursos.args[:]
+        self.dataTypeFlag = self.cursos.dataTypeFlag
+        print "print - ", self.args
+        self.peticion.emit()
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)

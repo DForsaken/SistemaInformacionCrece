@@ -59,8 +59,10 @@ class ClientThread( threading.Thread ):
                 else:                    
                     cmd = self.readline()    
                     if cmd != None and cmd != "":
-                        print " entro CMD " , cmd      
-                        self.writeline(self.procesarPeticion(cmd))
+                        print " entro CMD " , cmd
+                        res = self.procesarPeticion(cmd)      
+                        if res != "":
+                            self.writeline(res)
                         
         #
         # Make sure the socket is closed once we're done with it
@@ -101,6 +103,7 @@ class ClientThread( threading.Thread ):
         Helper function, writes teh given string to the socket, with an end of
         line marker appended at the end
         '''
+        print "voy a escribir !!!"
         listObjEnviar = self.utilidad.empaquetar(text)
         for i in range(0, len(listObjEnviar)):
             self.client.send(listObjEnviar[i])     
@@ -179,9 +182,6 @@ class Server:
                 try_count += 1
 
         print "Server is listening for incoming connections."
-        print "Try to connect through the command line, with:"
-        print "telnet localhost 5055"
-        print "and then type whatever you want."
         print
         print "typing 'bye' finishes the thread, but not the server ",
         print "(eg. you can quit telnet, run it again and get a different ",

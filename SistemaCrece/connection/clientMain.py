@@ -75,6 +75,7 @@ class clientMain:
             print "es string"
         if( None != resultado[0] ):
             print "not none result"
+        print "Resultado - ", resultado[0]
         return self.utilidad.desempaquetar(resultado[0])
         
        
@@ -87,7 +88,6 @@ class clientMain:
         print self.p.args
         print self.p.dataTypeFlag
         self.dataTypeFlag = self.p.dataTypeFlag
-        #test = pickle.dumps(list(self.p.args))
         print "enviando datos"
         self.enviarDatos(self.p.args)
         if self.p.args[2] == "":

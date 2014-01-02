@@ -11,7 +11,7 @@ class AgregarArea(QtGui.QMainWindow):
 
     closed = pyqtSignal()
     agregar = pyqtSignal()
-    args = ["agregarArea",""]
+    args = ["insertaArea",[],""]
 
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
@@ -19,8 +19,8 @@ class AgregarArea(QtGui.QMainWindow):
         self.ui.setupUi(self)
 
     def agregarArea(self):
-        self.args.append(str(self.ui.areaTxt.text()))
-        print self.ui.areaTxt.text(), " -> agregarArea"
+        self.args[1].append(str(self.ui.areaTxt.text()))
+        print self.ui.areaTxt.text(), " -> insertaArea"
         self.agregar.emit()
         self.cancelar()
 

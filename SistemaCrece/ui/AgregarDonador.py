@@ -2,12 +2,13 @@
 
 # Form implementation generated from reading ui file 'AgregarDonador.ui'
 #
-# Created: Sun Jun 16 14:11:53 2013
-#      by: PyQt4 UI code generator 4.10
+# Created: Sat Feb 08 21:39:00 2014
+#      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import QComboBoxWrapper
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -54,9 +55,9 @@ class Ui_Form(object):
         self.fechaInicioLbl = QtGui.QLabel(Form)
         self.fechaInicioLbl.setGeometry(QtCore.QRect(20, 260, 61, 16))
         self.fechaInicioLbl.setObjectName(_fromUtf8("fechaInicioLbl"))
-        self.cantidadLbl_2 = QtGui.QLineEdit(Form)
-        self.cantidadLbl_2.setGeometry(QtCore.QRect(90, 200, 113, 20))
-        self.cantidadLbl_2.setObjectName(_fromUtf8("cantidadLbl_2"))
+        self.cantidadTxt = QtGui.QLineEdit(Form)
+        self.cantidadTxt.setGeometry(QtCore.QRect(90, 200, 113, 20))
+        self.cantidadTxt.setObjectName(_fromUtf8("cantidadTxt"))
         self.nombreTxt = QtGui.QLineEdit(Form)
         self.nombreTxt.setGeometry(QtCore.QRect(90, 20, 113, 20))
         self.nombreTxt.setObjectName(_fromUtf8("nombreTxt"))
@@ -69,12 +70,12 @@ class Ui_Form(object):
         self.emailTxt = QtGui.QLineEdit(Form)
         self.emailTxt.setGeometry(QtCore.QRect(90, 110, 113, 20))
         self.emailTxt.setObjectName(_fromUtf8("emailTxt"))
-        self.clasificacionComboBox = QtGui.QComboBox(Form)
+        self.clasificacionComboBox = QComboBoxWrapper.QComboBoxWrapper(Form)
         self.clasificacionComboBox.setGeometry(QtCore.QRect(90, 140, 111, 21))
         self.clasificacionComboBox.setObjectName(_fromUtf8("clasificacionComboBox"))
-        self.viaDonacionComboBox_2 = QtGui.QComboBox(Form)
-        self.viaDonacionComboBox_2.setGeometry(QtCore.QRect(90, 170, 111, 21))
-        self.viaDonacionComboBox_2.setObjectName(_fromUtf8("viaDonacionComboBox_2"))
+        self.viaDonacionComboBox = QComboBoxWrapper.QComboBoxWrapper(Form)
+        self.viaDonacionComboBox.setGeometry(QtCore.QRect(90, 170, 111, 21))
+        self.viaDonacionComboBox.setObjectName(_fromUtf8("viaDonacionComboBox"))
         self.fechaInicioDate = QtGui.QDateEdit(Form)
         self.fechaInicioDate.setGeometry(QtCore.QRect(90, 230, 110, 21))
         self.fechaInicioDate.setObjectName(_fromUtf8("fechaInicioDate"))
@@ -101,9 +102,11 @@ class Ui_Form(object):
         self.emailLbl.setText(_translate("Form", "E-Mail:", None))
         self.clasificacionLbl.setText(_translate("Form", "Clasificación:", None))
         self.viaDonacionLbl.setText(_translate("Form", "Vía Donación:", None))
-        self.cantidadLbl.setText(_translate("Form", "Cantdidad:", None))
+        self.cantidadLbl.setText(_translate("Form", "Cantidad:", None))
         self.fechaSalidaLbl.setText(_translate("Form", "Fecha Salida:", None))
         self.fechaInicioLbl.setText(_translate("Form", "Fecha Inicio:", None))
+        self.fechaInicioDate.setDisplayFormat(_translate("Form", "yyyy/MM/dd", None))
+        self.fechaFinDate.setDisplayFormat(_translate("Form", "yyyy/MM/dd", None))
         self.AceptarBtn.setText(_translate("Form", "Aceptar", None))
         self.CancelarBtn.setText(_translate("Form", "Cancelar", None))
 

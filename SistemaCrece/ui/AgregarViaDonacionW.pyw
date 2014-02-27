@@ -10,13 +10,20 @@ from AgregarViaDonacion import Ui_Form
 class AgregarViaDonacion(QtGui.QMainWindow):
 
     closed = pyqtSignal()
+    agregar = pyqtSignal()
 
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
+        self.setWindowTitle("Sistema Crece")
+        self.dataTypeFlag = "string"
+        self.args = ["insertaViaDonacion",[],""]
 
     def agregarViaDonacion(self):
+        self.args[1].append(str(self.ui.viaDonacionTxt.text()))
+        print self.ui.viaDonacionTxt.text(), " -> insertaViaDonacion"
+        self.agregar.emit()
         self.cancelar()
 
     def cancelar(self):

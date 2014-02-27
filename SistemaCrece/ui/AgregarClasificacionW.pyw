@@ -10,13 +10,20 @@ from AgregarClasificacion import Ui_Form
 class AgregarClasificacion(QtGui.QMainWindow):
 
     closed = pyqtSignal()
+    agregar = pyqtSignal()
+    args = ["insertaClasificacion",[],""]
 
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
+        self.setWindowTitle("Sistema Crece")
+        self.dataTypeFlag = "string"
 
     def agregarClasificacion(self):
+        self.args[1].append(str(self.ui.clasificacionTxt.text()))
+        print self.ui.clasificacionTxt.text(), " -> insertaClasificacion"
+        self.agregar.emit()
         self.cancelar()
 
     def cancelar(self):

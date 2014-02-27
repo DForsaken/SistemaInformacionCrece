@@ -15,6 +15,9 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QDockWidget" name="dockWidget">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -24,7 +27,7 @@
      </rect>
     </property>
     <property name="floating">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="features">
      <set>QDockWidget::DockWidgetClosable|QDockWidget::DockWidgetFloatable</set>
@@ -100,16 +103,31 @@
    </property>
    <widget class="QMenu" name="menuCursos">
     <property name="title">
-     <string>Cursos</string>
+     <string>Programas</string>
     </property>
     <widget class="QMenu" name="menuVer">
      <property name="title">
       <string>Ver </string>
      </property>
+     <widget class="QMenu" name="menuEstudiante">
+      <property name="title">
+       <string>Estudiante</string>
+      </property>
+      <addaction name="actionVerTodosEstudiantes"/>
+      <addaction name="actionVerEstudiantesCurso"/>
+     </widget>
+     <widget class="QMenu" name="menuVoluntarios">
+      <property name="title">
+       <string>Voluntarios</string>
+      </property>
+      <addaction name="actionVerTodosVoluntarios"/>
+      <addaction name="actionVerVoluntariosCurso"/>
+     </widget>
      <addaction name="actionVerLista_cursos"/>
      <addaction name="actionVerMaestros"/>
-     <addaction name="actionVerEstudiantes"/>
+     <addaction name="menuEstudiante"/>
      <addaction name="actionVerLista_asistencia"/>
+     <addaction name="menuVoluntarios"/>
     </widget>
     <widget class="QMenu" name="menuAgregar">
      <property name="title">
@@ -134,8 +152,15 @@
      <addaction name="actionNuevoAlumno"/>
      <addaction name="actionExistente"/>
     </widget>
+    <widget class="QMenu" name="menuVerAlumno">
+     <property name="title">
+      <string>Ver</string>
+     </property>
+     <addaction name="actionVerTodosAlumnos"/>
+     <addaction name="actionVerAlumnoCurso"/>
+    </widget>
     <addaction name="menuAgregarAlumno"/>
-    <addaction name="actionVerAlumno"/>
+    <addaction name="menuVerAlumno"/>
    </widget>
    <widget class="QMenu" name="menuReportes">
     <property name="title">
@@ -200,16 +225,6 @@
     <string>Maestros</string>
    </property>
   </action>
-  <action name="actionVerEstudiantes">
-   <property name="text">
-    <string>Estudiante</string>
-   </property>
-  </action>
-  <action name="actionVerAlumno">
-   <property name="text">
-    <string>Ver</string>
-   </property>
-  </action>
   <action name="actionAyudante_2">
    <property name="text">
     <string>Estudiante</string>
@@ -248,6 +263,36 @@
   <action name="actionPDF">
    <property name="text">
     <string>PDF</string>
+   </property>
+  </action>
+  <action name="actionVerTodosAlumnos">
+   <property name="text">
+    <string>Todos</string>
+   </property>
+  </action>
+  <action name="actionVerAlumnoCurso">
+   <property name="text">
+    <string>Por curso</string>
+   </property>
+  </action>
+  <action name="actionVerTodosEstudiantes">
+   <property name="text">
+    <string>Todos</string>
+   </property>
+  </action>
+  <action name="actionVerEstudiantesCurso">
+   <property name="text">
+    <string>Por curso</string>
+   </property>
+  </action>
+  <action name="actionVerTodosVoluntarios">
+   <property name="text">
+    <string>Todos</string>
+   </property>
+  </action>
+  <action name="actionVerVoluntariosCurso">
+   <property name="text">
+    <string>Por curso</string>
    </property>
   </action>
  </widget>
@@ -413,6 +458,102 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionVerTodosAlumnos</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verAlumnos()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerTodosEstudiantes</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verEstudiantes()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerTodosVoluntarios</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verVoluntario()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerVoluntariosCurso</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verVoluntarioCurso()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerAlumnoCurso</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verAlumnoCurso()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVerEstudiantesCurso</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>verEstudianteCurso()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>agregarAlumnoCurso()</slot>
@@ -425,5 +566,10 @@
   <slot>verEstudiantes()</slot>
   <slot>verListaAsistencia()</slot>
   <slot>agregarCurso()</slot>
+  <slot>verAlumnoCurso()</slot>
+  <slot>verEstudianteCurso()</slot>
+  <slot>verVoluntario()</slot>
+  <slot>verVoluntarioCurso()</slot>
+  <slot>slot1()</slot>
  </slots>
 </ui>

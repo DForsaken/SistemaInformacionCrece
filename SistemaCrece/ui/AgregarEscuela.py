@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import QComboBoxWrapper
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -54,7 +55,7 @@ class Ui_Form(object):
         self.telefonoTxt = QtGui.QLineEdit(Form)
         self.telefonoTxt.setGeometry(QtCore.QRect(100, 110, 113, 20))
         self.telefonoTxt.setObjectName(_fromUtf8("telefonoTxt"))
-        self.ColoniaComboBox = QtGui.QComboBox(Form)
+        self.ColoniaComboBox = QComboBoxWrapper.QComboBoxWrapper(Form)
         self.ColoniaComboBox.setGeometry(QtCore.QRect(100, 140, 111, 21))
         self.ColoniaComboBox.setObjectName(_fromUtf8("ColoniaComboBox"))
         self.aceptarBtn = QtGui.QPushButton(Form)

@@ -2,12 +2,13 @@
 
 # Form implementation generated from reading ui file 'AgregarCurso.ui'
 #
-# Created: Sun Jun 16 14:11:42 2013
-#      by: PyQt4 UI code generator 4.10
+# Created: Thu Feb 06 22:33:37 2014
+#      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import QComboBoxWrapper
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -57,10 +58,10 @@ class Ui_Form(object):
         self.fechaFinDate = QtGui.QDateEdit(Form)
         self.fechaFinDate.setGeometry(QtCore.QRect(90, 110, 110, 21))
         self.fechaFinDate.setObjectName(_fromUtf8("fechaFinDate"))
-        self.areaComboBox = QtGui.QComboBox(Form)
+        self.areaComboBox = QComboBoxWrapper.QComboBoxWrapper(Form)
         self.areaComboBox.setGeometry(QtCore.QRect(90, 80, 111, 22))
         self.areaComboBox.setObjectName(_fromUtf8("areaComboBox"))
-        self.coloniaComboBox = QtGui.QComboBox(Form)
+        self.coloniaComboBox = QComboBoxWrapper.QComboBoxWrapper(Form)
         self.coloniaComboBox.setGeometry(QtCore.QRect(90, 50, 111, 22))
         self.coloniaComboBox.setObjectName(_fromUtf8("coloniaComboBox"))
         self.aceptarBtn = QtGui.QPushButton(Form)
@@ -83,6 +84,8 @@ class Ui_Form(object):
         self.fechaInicioLbl.setText(_translate("Form", "Fecha inicio:", None))
         self.fechaFinLbl.setText(_translate("Form", "Fecha fin:", None))
         self.enfoqueLbl.setText(_translate("Form", "Enfoque:", None))
+        self.fechaInicioDate.setDisplayFormat(_translate("Form", "yyyy/MM/dd", None))
+        self.fechaFinDate.setDisplayFormat(_translate("Form", "yyyy/MM/dd", None))
         self.aceptarBtn.setText(_translate("Form", "Aceptar", None))
         self.cancelarBtn.setText(_translate("Form", "Cancelar", None))
 

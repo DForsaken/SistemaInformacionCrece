@@ -11,12 +11,15 @@ class AgregarArea(QtGui.QMainWindow):
 
     closed = pyqtSignal()
     agregar = pyqtSignal()
-    args = ["insertaArea",[],""]
 
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_Form()
+        self.setWindowTitle("Sistema Crece")
         self.ui.setupUi(self)
+        self.dataTypeFlag = "string"
+        self.args = ["insertaArea",[],""]
+
 
     def agregarArea(self):
         self.args[1].append(str(self.ui.areaTxt.text()))

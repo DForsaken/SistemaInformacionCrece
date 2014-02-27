@@ -6,6 +6,7 @@ import socket
 import threading
 import time
 import conexionBD
+from PyQt4 import QtGui
 from utilidades import Utilidades
 
 QUIT = False
@@ -41,29 +42,33 @@ class ClientThread( threading.Thread ):
         #
         
         while not done:
-            #handshake 
-            if self.firstRead :
-                self.firstRead = False
-                cmd = self.readline()
-                print "comunidad readline", cmd
-                if 'comunidad' == cmd: 
-                    self.writeline("crece")
-                    print "enviando crece"
-                elif cmd == None:
-                    print "no crece"
-            else:
-                if 'quit' == cmd :
-                    self.writeline( 'Ok, bye' )
-                    QUIT = True
-                    done = True
-                else:                    
-                    cmd = self.readline()    
-                    if cmd != None and cmd != "":
-                        print " entro CMD " , cmd
-                        res = self.procesarPeticion(cmd)      
-                        if res != "":
-                            self.writeline(res)
-                        
+            try:
+                #handshake 
+                if self.firstRead :
+                    self.firstRead = False
+                    cmd = self.readline()
+                    print "comunidad readline", cmd
+                    if 'comunidad' == cmd: 
+                        self.writeline("crece")
+                        print "enviando crece"
+                    elif cmd == None:
+                        print "no crece"
+                else:
+                    if 'quit' == cmd :
+                        self.writeline( 'Ok, bye' )
+                        QUIT = True
+                        done = True
+                    elif 'bye' == cmd:
+                        done = True
+                    else:                    
+                        cmd = self.readline()    
+                        if cmd != None and cmd != "":
+                            print " entro CMD " , cmd
+                            res = self.procesarPeticion(cmd)      
+                            if res != "":
+                                self.writeline(res)
+            except socket.error, e:
+                print "error de conexion"
         #
         # Make sure the socket is closed once we're done with it
         #
@@ -75,7 +80,7 @@ class ClientThread( threading.Thread ):
         Helper function, reads up to 64000 chars from the socket, and returns
         them as a string, all letters in lowercase, and without any end of line
         markers '''
-        self.client.setblocking(False)
+        self.client.setblocking(True)
         resultado = []
         objSerializado = ""
         #while(True):
@@ -94,8 +99,8 @@ class ClientThread( threading.Thread ):
                 if None != objSerializado or objSerializado == "":
                     print "retornando", objSerializado
                     return self.utilidad.desempaquetar(objSerializado)
-        except:
-            a = ""
+        except Exception, e:
+            print e
         return None
     
     def writeline( self, text ):
@@ -103,11 +108,11 @@ class ClientThread( threading.Thread ):
         Helper function, writes teh given string to the socket, with an end of
         line marker appended at the end
         '''
-        print "voy a escribir !!!"
         listObjEnviar = self.utilidad.empaquetar(text)
+        print "voy a escribir !!! - ", len(listObjEnviar)
         for i in range(0, len(listObjEnviar)):
             self.client.send(listObjEnviar[i])     
-        
+    
     def procesarPeticion(self, args):
         #separa la informacion en 3 partes
         
@@ -163,13 +168,24 @@ class Server:
                 #
                 # Bind it to the interface and port we want to listen on
                 #
-                self.sock.bind( ( '127.0.0.1', 50050 ) )            
+                address = ""
+                port = -1
+                f = open("server.conf","r")
+                i = 0
+                for line in f.readlines():
+                    if i == 2:
+                        address = line.strip()
+                    elif i == 4:
+                        port = int(line.strip())
+                    i += 1
+                print address, "-", port
+                self.sock.bind( ( address, port ) )            
                 #
                 # Listen for incoming connections. This server can handle up to
                 # 5 simultaneous connections
                 #
-                self.sock.listen( 5 )
-                self.sock.setblocking(False)
+                self.sock.listen( 15 )
+                self.sock.setblocking(True)
                 all_good = True
                 break
             except socket.error, err:

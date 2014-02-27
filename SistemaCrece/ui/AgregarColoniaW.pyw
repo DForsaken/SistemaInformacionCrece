@@ -15,6 +15,7 @@ class AgregarColonia(QtGui.QMainWindow):
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
+        self.setWindowTitle("Sistema Crece")
 
     def agregarColonia(self):
         self.cancelar()

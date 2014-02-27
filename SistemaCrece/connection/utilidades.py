@@ -21,14 +21,18 @@ class Utilidades:
         a = self.unwrapperEmpaquetado(obj)
         return a
 
-
     def wrapperEmpaquetado(self, obj):
         dumpObj = pickle.dumps(obj)
+        file=open("servertest", "w")
+        file.write(dumpObj)
+        file.close()
+        #print ' a comparar Empa', dumpObj
+        #print 'a delirar Empa', pickle.loads(dumpObj)
         lenDumpObj = len(dumpObj)
         if lenDumpObj < self.infoSize:
             numPacks = 1
         else:
-            numPacks = math.ceil(lenDumpObj / self.infoSize)
+            numPacks = int(math.ceil(float(lenDumpObj) / float(self.infoSize)))
         listPaquetes = []
         esUltimo = 0
         for i in range(0,numPacks):
@@ -36,15 +40,24 @@ class Utilidades:
                 tempDumpObj = dumpObj[i*self.infoSize:lenDumpObj]
                 lenDumpObj = len(tempDumpObj)
                 tamToFill = self.infoSize - lenDumpObj
+                print "lenDumpObj2", len(tempDumpObj), " - ", str(lenDumpObj), " - ", tamToFill
                 tempDumpObj += self.fillString(tamToFill)
+                str2send = tempDumpObj + self.getStrDumpObjTam(str(lenDumpObj))
+                print "str2send lenDumpObj2 ", len(tempDumpObj), " - ", len(self.getStrDumpObjTam(str(lenDumpObj)))
             else:
-                tempDumpObj = dumpObj[i*self.infoSize:(i*self.infoSize)+self.infoSize-1]
+                tempDumpObj = dumpObj[i*self.infoSize:(i*self.infoSize)+self.infoSize]
+                print "lenDumpObj1", len(tempDumpObj), " - ", str(self.infoSize-1)
+                str2send = tempDumpObj + self.getStrDumpObjTam(str(self.infoSize))
             if i == numPacks-1:
                 esUltimo = 1 
-            str2send = str(tempDumpObj + self.getStrDumpObjTam(str(lenDumpObj)) + str(esUltimo))
+            str2send += str(esUltimo)
             listPaquetes.append(str2send) 
+        print "imprimiendo paquetes"
+        for i in listPaquetes:
+            print "-", len(i)
+        self.delirar(listPaquetes)
         return listPaquetes    
-    
+        
     def getStrDumpObjTam(self, dumpObjTam):
         tempStr = ""
         for i in range(len(dumpObjTam),4):
@@ -58,16 +71,22 @@ class Utilidades:
         return tempStr
     
     def unwrapperEmpaquetado(self, obj):
-        tamObj = len(obj)
-        esUltimo = int(obj[tamObj-self.packEsUltimoIndice:tamObj])
-        tamInfo = int(obj[tamObj-self.packTamIndice:tamObj-self.packEsUltimoIndice])
-        info = obj[:tamInfo]
-        a = [info, esUltimo]  
-        return a    
-    
-        
-        
-        
-        
-        
+        try:
+            tamObj = len(obj)
+            esUltimo = int(obj[tamObj-self.packEsUltimoIndice:tamObj])
+            tamInfo = int(obj[tamObj-self.packTamIndice:tamObj-self.packEsUltimoIndice])
+            info = obj[:tamInfo]
+            a = [info, esUltimo]  
+            print " -sdfsd- ", tamInfo, " - " , esUltimo
+            return a    
+        except Exception, e:
+            print e
+    def delirar(self, paquetes):
+        objSerializado = ""
+        for i in paquetes:
+            resultado = self.unwrapperEmpaquetado(i)
+            objSerializado += resultado[0]
+            if resultado[1] == 1:
+                break    
+        a = pickle.loads(objSerializado)
     

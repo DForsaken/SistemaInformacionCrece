@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'Inicio.ui'
 #
-# Created: Mon Jun 17 23:17:29 2013
-#      by: PyQt4 UI code generator 4.10
+# Created: Wed Feb 26 00:26:39 2014
+#      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(214, 127)
+        Form.resize(256, 128)
         self.usuarioLbl = QtGui.QLabel(Form)
         self.usuarioLbl.setGeometry(QtCore.QRect(20, 30, 46, 13))
         self.usuarioLbl.setObjectName(_fromUtf8("usuarioLbl"))
@@ -34,24 +34,30 @@ class Ui_Form(object):
         self.contrasenaLbl_2.setGeometry(QtCore.QRect(20, 60, 61, 16))
         self.contrasenaLbl_2.setObjectName(_fromUtf8("contrasenaLbl_2"))
         self.ingresarBtn = QtGui.QPushButton(Form)
-        self.ingresarBtn.setGeometry(QtCore.QRect(130, 90, 75, 23))
+        self.ingresarBtn.setGeometry(QtCore.QRect(160, 90, 75, 23))
         self.ingresarBtn.setObjectName(_fromUtf8("ingresarBtn"))
-        self.lineEdit = QtGui.QLineEdit(Form)
-        self.lineEdit.setGeometry(QtCore.QRect(90, 30, 113, 20))
-        self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
-        self.lineEdit_2 = QtGui.QLineEdit(Form)
-        self.lineEdit_2.setGeometry(QtCore.QRect(90, 60, 113, 20))
-        self.lineEdit_2.setInputMask(_fromUtf8(""))
-        self.lineEdit_2.setEchoMode(QtGui.QLineEdit.PasswordEchoOnEdit)
-        self.lineEdit_2.setObjectName(_fromUtf8("lineEdit_2"))
+        self.usuarioTxt = QtGui.QLineEdit(Form)
+        self.usuarioTxt.setGeometry(QtCore.QRect(90, 30, 141, 20))
+        self.usuarioTxt.setObjectName(_fromUtf8("usuarioTxt"))
+        self.contrasenaTxt = QtGui.QLineEdit(Form)
+        self.contrasenaTxt.setGeometry(QtCore.QRect(90, 60, 141, 20))
+        self.contrasenaTxt.setInputMask(_fromUtf8(""))
+        self.contrasenaTxt.setEchoMode(QtGui.QLineEdit.Password)
+        self.contrasenaTxt.setObjectName(_fromUtf8("contrasenaTxt"))
+        self.recuperarContrasenaBtn = QtGui.QPushButton(Form)
+        self.recuperarContrasenaBtn.setGeometry(QtCore.QRect(0, 100, 121, 23))
+        self.recuperarContrasenaBtn.setFlat(True)
+        self.recuperarContrasenaBtn.setObjectName(_fromUtf8("recuperarContrasenaBtn"))
 
         self.retranslateUi(Form)
         QtCore.QObject.connect(self.ingresarBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form.ingresar)
+        QtCore.QObject.connect(self.recuperarContrasenaBtn, QtCore.SIGNAL(_fromUtf8("clicked()")), Form.recuperarContrasena)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "Form", None))
+        Form.setWindowTitle(_translate("Form", "Sistema Crece", None))
         self.usuarioLbl.setText(_translate("Form", "Usuario:", None))
         self.contrasenaLbl_2.setText(_translate("Form", "Contraseña:", None))
         self.ingresarBtn.setText(_translate("Form", "Ingresar", None))
+        self.recuperarContrasenaBtn.setText(_translate("Form", "Recuperar contraseña", None))
 
